@@ -34,4 +34,22 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 		return null;
 	}
 
+	@Override
+	public Film createFilm(Film film) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean deleteFilm(int filmId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Film updateFilm(int filmId, Film film) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
