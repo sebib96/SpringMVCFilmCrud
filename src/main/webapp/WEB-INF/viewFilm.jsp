@@ -16,6 +16,11 @@
 				
 
 			</ul>
+	<form action="Delete.do" method="GET">
+		Delete Film
+		<input type="text" name="" size="6"/> 
+		<input type="submit" value="" />
+	</form>
 
 
 		</c:when>
@@ -25,10 +30,5 @@
 	</c:choose>
 	
 	
-	<form action="Delete.do" method="GET">
-		Delete Film
-		<input type="text" name="" size="6"/> 
-		<input type="submit" value="" />
-	</form>
 </body>
 </html>
