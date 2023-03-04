@@ -11,16 +11,25 @@
 <body>
 	<c:choose>
 		<c:when test="${! empty film}">
+			
+				<h4>Film title: ${film.title}</h4>
 			<ul>
-				<li>${film.title}</li>
-				
-
+				<li>Description: ${film.desc}.</li>
+				<li>Release year: ${film.releaseYear}</li>
+				<li>Language id: ${film.langId}</li>
+				<li>Language name: ${film.langName}</li>
+				<li>Rental duration: ${film.rentDur} days</li>
+				<li>Rental cost: $${film.rentRate}</li>
+				<li>Film length: ${film.length} mins</li>
+				<li>Replacement cost: $${film.repCost}</li>
+				<li>Film Rating: ${film.rating}</li>
+				<li>Special Features ${film.features}</li>				
 			</ul>
-	<form action="Delete.do" method="GET">
-		Delete Film
-		<input type="text" name="" size="6"/> 
-		<input type="submit" value="" />
-	</form>
+			<a href="updateFilm.html">Update Film Details</a>
+			<br/>
+			<form action="Delete.do" method="GET">
+				Delete Film <input type="submit" name="filmId" value="Delete" />
+			</form>
 
 
 		</c:when>
@@ -28,7 +37,7 @@
 			<p>No film found</p>
 		</c:otherwise>
 	</c:choose>
-	
-	
+
+
 </body>
 </html>
