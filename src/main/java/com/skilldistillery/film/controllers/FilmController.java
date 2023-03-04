@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.skilldistillery.film.data.FilmDAO;
+import com.skilldistillery.film.entities.Film;
 
 @Controller
 public class FilmController {
@@ -18,6 +19,9 @@ public class FilmController {
 	
 	@RequestMapping(path= {"/","home.do"})
 	public String goHome(Model model) {
+		Film TEST = filmDao.findFilmById(1); //Debug
+		model.addAttribute("TestFilm", TEST);
+		
 		return "home";
 	}
 }
