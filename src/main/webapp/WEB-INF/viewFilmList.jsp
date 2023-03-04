@@ -16,6 +16,7 @@
 				<c:forEach var="film" items="${film}">
 					<h4>Film title: ${film.title}</h4>
 					<ul>
+						<li>Film id: ${film.id}</li>
 						<li>Description: ${film.desc}.</li>
 						<li>Release year: ${film.releaseYear}</li>
 						<li>Language id: ${film.langId}</li>
@@ -28,10 +29,22 @@
 						<li>Special Features ${film.features}</li>
 					</ul>
 				</c:forEach>
-				<a href="updateFilm.html">Update Film Details</a>
+
+
+				<form>
+
+					<a href="Update.do?filmId=filmId">Update Film</a> <label
+						for="filmId">Enter film Id</label> 
+						<input type="text" name="filmId" value=""> <input type="submit"
+						value="Update film">
+				</form>
+
+
 				<br />
-				<form action="Delete.do" method="GET">
-					Delete Film <input type="submit" name="filmId" value="Delete" />
+				<form action="Delete.do" method="POST">
+					<label for="filmId">Delete Film</label> 
+					<input type="text" name="filmId" value="">
+					 <input type="submit" value="Delete film">
 				</form>
 			</c:otherwise>
 		</c:choose>
