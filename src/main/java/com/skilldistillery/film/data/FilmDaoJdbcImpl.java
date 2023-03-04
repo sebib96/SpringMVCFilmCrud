@@ -151,46 +151,39 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 	}
 	// ________________________________________________________________________________
 
-	
-	
-
-	
-	
-	
 	@Override
 	public Film createFilm(Film film) {
 		Connection conn = null;
-		
+
 		try {
 			conn = DriverManager.getConnection(url, user, pass);
 			conn.setAutoCommit(false); // START TRANSACTION
 			String sql = "INSERT INTO film (title, description, release_year, language_id, rental_duration,"
 					+ " rental_rate, replacement_cost ) " + " VALUES (?, ?, ?, 1, ?, ?, ? )";
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-					stmt.setString(1, film.getTitle());
-					stmt.setString(2, film.getDesc());
-					stmt.setInt(3, film.getReleaseYear());
-					stmt.setInt(4, film.getRentDur());
-					stmt.setDouble(5, film.getRentRate());
+			stmt.setString(1, film.getTitle());
+			stmt.setString(2, film.getDesc());
+			stmt.setInt(3, film.getReleaseYear());
+			stmt.setInt(4, film.getRentDur());
+			stmt.setDouble(5, film.getRentRate());
 //					stmt.setInt(6, film.getLength());
-					stmt.setDouble(6, film.getRepCost());
+			stmt.setDouble(6, film.getRepCost());
 //					stmt.setString(8, film.getRating());
 //					stmt.setString(9, film.getFeatures());
-					int updateCount = stmt.executeUpdate();
-					if (updateCount ==1) {
-						ResultSet keys = stmt.getGeneratedKeys();
-								if(keys.next()) {
-									int newFilmId = keys.getInt(1);
-									film.setId(newFilmId);
-									}
-					} else {
-						film = null;
-					}
-					conn.commit(); // COMMIT TRANSACTION
-					
+			int updateCount = stmt.executeUpdate();
+			if (updateCount == 1) {
+				ResultSet keys = stmt.getGeneratedKeys();
+				if (keys.next()) {
+					int newFilmId = keys.getInt(1);
+					film.setId(newFilmId);
+				}
+			} else {
+				film = null;
+			}
+			conn.commit(); // COMMIT TRANSACTION
+
 		}
-		
-		
+
 		catch (SQLException sqle) {
 			sqle.printStackTrace();
 			if (conn != null) {
@@ -208,39 +201,73 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 
 	@Override
 	public boolean deleteFilm(int filmId) {
-		  Connection conn = null;
-		  Film film = new Film();
-		  try {
-		    conn = DriverManager.getConnection(url, user, pass);
-		    conn.setAutoCommit(false); // START TRANSACTION
-		    String sql = "DELETE FROM film WHERE id = ?";
-		    PreparedStatement stmt = conn.prepareStatement(sql);
-		    stmt.setInt(1, film.getId());
-		    int updateCount = stmt.executeUpdate();
-		    if (updateCount == 1) {
-		    	
-		    	conn.commit();             // COMMIT TRANSACTION
-		    }
-		  }
-		  catch (SQLException sqle) {
-		    sqle.printStackTrace();
-		    if (conn != null) {
-		      try { conn.rollback(); }
-		      catch (SQLException sqle2) {
-		        System.err.println("Error trying to rollback");
-		      }
-		    }
-		    return false;
-		  }
-		  return true;
+		Connection conn = null;
+		Film film = new Film();
+		try {
+			conn = DriverManager.getConnection(url, user, pass);
+			conn.setAutoCommit(false); // START TRANSACTION
+			String sql = "DELETE FROM film WHERE id = ?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, film.getId());
+			int updateCount = stmt.executeUpdate();
+			if (updateCount == 1) {
+
+				conn.commit(); // COMMIT TRANSACTION
+			}
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException sqle2) {
+					System.err.println("Error trying to rollback");
+				}
+			}
+			return false;
 		}
+		return true;
+	}
 	// ________________________________________________________________________________
 
 	@Override
 	public Film updateFilm(int filmId, Film film) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(url, user, pass);
+			conn.setAutoCommit(false); // START TRANSACTION
+			String sql = "UPDATE film SET (title, description, release_year, language_id, rental_duration, rental_rate, "
+					+ "replacement_cost ) " + " VALUES (?, ?, ?, 1, ?, ?, ? )";
+
+			PreparedStatement stmt = conn.prepareStatement(sql);
+
+			stmt.setString(1, film.getTitle());
+			stmt.setString(2, film.getDesc());
+			stmt.setInt(3, film.getReleaseYear());
+			stmt.setInt(4, film.getRentDur());
+			stmt.setDouble(5, film.getRentRate());
+//			stmt.setInt(6, film.getLength());
+			stmt.setDouble(6, film.getRepCost());
+//			stmt.setString(8, film.getRating());
+//			stmt.setString(9, film.g
+			int updateCount = stmt.executeUpdate();
+			if (updateCount == 1) {
+				conn.commit();
+			}
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} // ROLLBACK TRANSACTION ON ERROR
+				catch (SQLException sqle2) {
+					System.err.println("Error trying to rollback");
+				}
+			}
+			return null;
+		}
+		return film;
 	}
+
 	// ________________________________________________________________________________
 
 	@Override
@@ -265,4 +292,33 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 	}
 	// ________________________________________________________________________________
 
+	public String findCategory(int filmId) {
+		String cat = "";
+
+		try {
+			Connection conn = DriverManager.getConnection(url, user, pass);
+			String sql = "SELECT cat.name \n" + "From Category cat Join film flm \n" + "On cat.id = flm.id \n"
+					+ "WHERE flm.id = ? ";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, filmId);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				cat = rs.getString("name");
+			} else {
+				cat = "none";
+			}
+			rs.close();
+			stmt.close();
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		}
+
+		return cat;
+
+	}
+
+	
+	
 }
