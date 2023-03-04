@@ -52,6 +52,9 @@ public class Film {
 		this.features = features;
 
 	}
+	public Film() {
+		
+	}
 
 	public int getId() {
 		return id;

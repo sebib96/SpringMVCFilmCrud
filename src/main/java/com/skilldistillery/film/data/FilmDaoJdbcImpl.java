@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 	private static final String user = "student";
 	private static final String pass = "student";
 
-	//________________________________________________________________________________
+	// ________________________________________________________________________________
 	static {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -29,9 +30,8 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 			throw new RuntimeException("Unable to load MySQL Driver class");
 		}
 	}
-	//________________________________________________________________________________
+	// ________________________________________________________________________________
 
-	
 	@Override
 	public Actor findActorById(int actorId) {
 		Actor actor = null;
@@ -51,10 +51,9 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 			e.printStackTrace();
 		}
 		return actor;
-		
-	}
-	//________________________________________________________________________________
 
+	}
+	// ________________________________________________________________________________
 
 	@Override
 	public List<Actor> findActorsByFilmId(int filmId) {
@@ -80,10 +79,9 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 		}
 
 		return filmActors;
-		
-	}
-	//________________________________________________________________________________
 
+	}
+	// ________________________________________________________________________________
 
 	@Override
 	public Film findFilmById(int filmId) {
@@ -114,10 +112,9 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 			e.printStackTrace();
 		}
 		return foundFilm;
-		
-	}
-	//________________________________________________________________________________
 
+	}
+	// ________________________________________________________________________________
 
 	@Override
 	public List<Film> findFilmByKeyWord(String keyWord) {
@@ -151,31 +148,99 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 		}
 		return filmList;
 	}
-	//________________________________________________________________________________
+	// ________________________________________________________________________________
 
+	
+	
 
+	
+	
+	
 	@Override
 	public Film createFilm(Film film) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = null;
+		
+		try {
+			conn = DriverManager.getConnection(url, user, pass);
+			conn.setAutoCommit(false); // START TRANSACTION
+			String sql = "INSERT INTO film (title, description, release_year, language_id, rental_duration,"
+					+ " rental_rate, length, replacement_cost, rating, special_features) " + " VALUES (?, ?, ?, 1, ?, ?, ?, ?, ?, ?)";
+			PreparedStatement stmt = conn.prepareStatement(sql, Statement.NO_GENERATED_KEYS);
+					stmt.setString(1, film.getTitle());
+					stmt.setString(2, film.getDesc());
+					stmt.setInt(3, film.getReleaseYear());
+					stmt.setInt(5, film.getRentDur());
+					stmt.setDouble(6, film.getRentRate());
+					stmt.setInt(7, film.getLength());
+					stmt.setDouble(8, film.getRepCost());
+					stmt.setString(9, film.getRating());
+					stmt.setString(10, film.getFeatures());
+					int updateCount = stmt.executeUpdate();
+					if (updateCount ==1) {
+						ResultSet keys = stmt.getGeneratedKeys();
+								if(keys.next()) {
+									int newFilmId = keys.getInt(1);
+									film.setId(newFilmId);
+									}
+					} else {
+						film = null;
+					}
+					conn.commit(); // COMMIT TRANSACTION
+					
+		}
+		
+		
+		catch (SQLException sqle) {
+			sqle.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException sqle2) {
+					System.err.println("Error trying to rollback");
+				}
+			}
+			throw new RuntimeException("Error inserting actor " + film);
+		}
+		return film;
 	}
-	//________________________________________________________________________________
-
+	// ________________________________________________________________________________
 
 	@Override
 	public boolean deleteFilm(int filmId) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	//________________________________________________________________________________
+		  Connection conn = null;
+		  Film film = new Film();
+		  try {
+		    conn = DriverManager.getConnection(url, user, pass);
+		    conn.setAutoCommit(false); // START TRANSACTION
+		    String sql = "DELETE FROM film WHERE id = ?";
+		    PreparedStatement stmt = conn.prepareStatement(sql);
+		    stmt.setInt(1, film.getId());
+		    int updateCount = stmt.executeUpdate();
+		    if (updateCount == 1) {
+		    	
+		    	conn.commit();             // COMMIT TRANSACTION
+		    }
+		  }
+		  catch (SQLException sqle) {
+		    sqle.printStackTrace();
+		    if (conn != null) {
+		      try { conn.rollback(); }
+		      catch (SQLException sqle2) {
+		        System.err.println("Error trying to rollback");
+		      }
+		    }
+		    return false;
+		  }
+		  return true;
+		}
+	// ________________________________________________________________________________
 
 	@Override
 	public Film updateFilm(int filmId, Film film) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	//________________________________________________________________________________
-
+	// ________________________________________________________________________________
 
 	@Override
 	public String findFilmLanguage(int filmId) {
@@ -197,6 +262,6 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 		return langName;
 
 	}
-	//________________________________________________________________________________
+	// ________________________________________________________________________________
 
 }
