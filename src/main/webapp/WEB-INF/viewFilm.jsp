@@ -11,24 +11,33 @@
 <body>
 	<c:choose>
 		<c:when test="${! empty film}">
-			
-				<h4>Film title: ${film.title}</h4>
+
+			<h4>Film title: ${film.title}</h4>
 			<ul>
+				<li>ID: ${film.id}</li>
 				<li>Description: ${film.desc}.</li>
 				<li>Release year: ${film.releaseYear}</li>
 				<li>Language id: ${film.langId}</li>
 				<li>Language name: ${film.langName}</li>
 				<li>Rental duration: ${film.rentDur} days</li>
-				<li>Rental cost: $${film.rentRate}</li>
+				<li>Rental cost: ${film.rentRate}</li>
 				<li>Film length: ${film.length} mins</li>
-				<li>Replacement cost: $${film.repCost}</li>
+				<li>Replacement cost: ${film.repCost}</li>
 				<li>Film Rating: ${film.rating}</li>
-				<li>Special Features ${film.features}</li>				
+				<li>Special Features ${film.features}</li>
 			</ul>
-			<a href="updateFilm.html">Update Film Details</a>
-			<br/>
-			<form action="Delete.do" method="GET">
-				Delete Film <input type="submit" name="filmId" value="Delete" />
+
+
+			<a href="Update.do?filmId=${film.id}">Update</a>
+
+			<br>
+
+
+			<form action="Delete.do" method="POST">
+				Delete Film <input type="hidden" name="filmId" value="${film.id}" />
+				<input type="submit" value="Delete" />
+
+
 			</form>
 
 

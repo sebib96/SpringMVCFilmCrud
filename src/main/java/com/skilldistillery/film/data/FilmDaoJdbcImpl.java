@@ -202,17 +202,17 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 	@Override
 	public boolean deleteFilm(int filmId) {
 		Connection conn = null;
-		Film film = new Film();
+		
 		try {
 			conn = DriverManager.getConnection(url, user, pass);
 			conn.setAutoCommit(false); // START TRANSACTION
-			String sql = "DELETE FROM film WHERE id = ?";
+			String sql = "DELETE film FROM film WHERE id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, film.getId());
+			stmt.setInt(1, filmId);
 			int updateCount = stmt.executeUpdate();
+			conn.commit(); // COMMIT TRANSACTION
 			if (updateCount == 1) {
 
-				conn.commit(); // COMMIT TRANSACTION
 			}
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
