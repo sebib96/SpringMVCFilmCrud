@@ -14,4 +14,5 @@ public interface FilmDAO {
 	Film createFilm(Film film);
 	boolean deleteFilm(int filmId);
 	Film updateFilm(int filmId, Film film);
+	String findFilmLanguage(int filmId);
 }
