@@ -66,5 +66,6 @@ public class FilmController {
 		mv.setViewName("viewFilmList");
 		return mv;
 	}
+	
 
 }

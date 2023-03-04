@@ -9,21 +9,28 @@
 <title>Film</title>
 </head>
 <body>
-	<c:choose>
-		<c:when test="${! empty film}">
-			<ul>
+	<ul>
+		<c:choose>
+			<c:when test="${empty film}"> No Films Found </c:when>
+			<c:otherwise>
+				<c:forEach var="film" items="${film}">
+					<li>${film}</li>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+	</ul>
 
-
-				<li>${film}</li>
-
-			</ul>
-
-
-		</c:when>
-		<c:otherwise>
-			<p>No film found</p>
-		</c:otherwise>
-	</c:choose>
-	--%>
+	
+	<form action="Update.do" method="GET">
+		Update Film Details
+		<input type="text" name="" size="6"/> 
+		<input type="submit" value="" />
+	</form>
+	<form action="Delete.do" method="GET">
+		Delete Film
+		<input type="text" name="" size="6"/> 
+		<input type="submit" value="" />
+	</form>
+	
 </body>
 </html>
