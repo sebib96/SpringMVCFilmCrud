@@ -12,7 +12,7 @@
 	<c:choose>
 		<c:when test="${! empty film}">
 			<ul>
-				<li>${film}</li>
+				<li>${film.title}</li>
 				
 
 			</ul>
@@ -23,5 +23,12 @@
 			<p>No film found</p>
 		</c:otherwise>
 	</c:choose>
+	
+	
+	<form action="Delete.do" method="GET">
+		Delete Film
+		<input type="text" name="" size="6"/> 
+		<input type="submit" value="" />
+	</form>
 </body>
 </html>

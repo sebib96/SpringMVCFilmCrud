@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -50,9 +51,9 @@ public class FilmController {
 	}
 
 	@RequestMapping(path = "GetFilmDataById.do", method = RequestMethod.GET)
-	public ModelAndView getFilmbyId(int id) {
+	public ModelAndView getFilmbyId(int filmId) {
 		ModelAndView mv = new ModelAndView();
-		Film film = filmDao.findFilmById(id);
+		Film film = filmDao.findFilmById(filmId);
 		mv.addObject("film", film);
 		mv.setViewName("viewFilm");
 		return mv;
