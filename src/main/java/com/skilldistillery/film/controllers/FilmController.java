@@ -63,7 +63,7 @@ public class FilmController {
 		ModelAndView mv = new ModelAndView();
 		List<Film> film = filmDao.findFilmByKeyWord(keyWord);
 		mv.addObject("film", film);
-		mv.setViewName("viewFilm");
+		mv.setViewName("viewFilmList");
 		return mv;
 	}
 

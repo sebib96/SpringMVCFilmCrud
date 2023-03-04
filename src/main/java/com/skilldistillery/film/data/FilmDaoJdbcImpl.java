@@ -146,6 +146,7 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		System.out.println(filmList);
 		return filmList;
 	}
 	// ________________________________________________________________________________

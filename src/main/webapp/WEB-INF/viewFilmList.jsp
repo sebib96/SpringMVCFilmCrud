@@ -12,8 +12,9 @@
 	<c:choose>
 		<c:when test="${! empty film}">
 			<ul>
+
+
 				<li>${film}</li>
-				
 
 			</ul>
 
@@ -23,5 +24,6 @@
 			<p>No film found</p>
 		</c:otherwise>
 	</c:choose>
+	--%>
 </body>
 </html>
