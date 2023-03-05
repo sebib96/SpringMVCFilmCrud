@@ -31,20 +31,20 @@
 				</c:forEach>
 
 
-				<form>
+				
 
-					<a href="Update.do?filmId=filmId">Update Film</a> <label
-						for="filmId">Enter film Id</label> 
-						<input type="text" name="filmId" value=""> <input type="submit"
-						value="Update film">
+					<form action="Update.do?film.id=filmId" method="GET">
+					<input type="text"
+						name="filmId" size="4" /> <input type="submit"
+						value="Enter film Id to update" />
 				</form>
 
 
 				<br />
 				<form action="Delete.do" method="POST">
-					<label for="filmId">Delete Film</label> 
-					<input type="text" name="filmId" value="">
-					 <input type="submit" value="Delete film">
+					<label for="filmId">Delete Film</label> <input type="text"
+						name="filmId" value=""> <input type="submit"
+						value="Delete film">
 				</form>
 			</c:otherwise>
 		</c:choose>

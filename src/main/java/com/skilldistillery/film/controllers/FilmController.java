@@ -104,7 +104,7 @@ public class FilmController {
 		filmDao.updateFilm(id, film);
 		redir.addFlashAttribute("film", film);
 		mv.setViewName("redirect:filmUpdated.do");
-
+//System.out.println(film.toString());
 		return mv;
 	}
 
