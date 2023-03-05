@@ -7,6 +7,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Film</title>
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+	crossorigin="anonymous">
+
 </head>
 <body>
 	<ul>
@@ -34,17 +41,17 @@
 				<form>
 
 					<a href="Update.do?filmId=filmId">Update Film</a> <label
-						for="filmId">Enter film Id</label> 
-						<input type="text" name="filmId" value=""> <input type="submit"
+						for="filmId">Enter film Id</label> <input type="text"
+						name="filmId" value=""> <input type="submit"
 						value="Update film">
 				</form>
 
 
 				<br />
 				<form action="Delete.do" method="POST">
-					<label for="filmId">Delete Film</label> 
-					<input type="text" name="filmId" value="">
-					 <input type="submit" value="Delete film">
+					<label for="filmId">Delete Film</label> <input type="text"
+						name="filmId" value=""> <input type="submit"
+						value="Delete film">
 				</form>
 			</c:otherwise>
 		</c:choose>
