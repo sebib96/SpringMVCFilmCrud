@@ -24,30 +24,32 @@
 				<li>ID: ${film.id}</li>
 				<li>Description: ${film.desc}.</li>
 				<li>Release year: ${film.releaseYear}</li>
-				<li>Language id: ${film.langId}</li>
+				<li>Language Name: ${film.langName}</li>
 				<li>Rental duration: ${film.rentDur} days</li>
 				<li>Rental cost: ${film.rentRate}</li>
 				<li>Film length: ${film.length} mins</li>
 				<li>Replacement cost: ${film.repCost}</li>
 				<li>Film Rating: ${film.rating}</li>
-				<li>Special Features ${film.features}</li>
-
+				<li>Special Features: ${film.features}</li>
+				<li>Genere: ${film.cat }</li>
+				<li>Cast: ${film.filmActors}</li>
 			</ul>
 
+			<a href="home.do">Home</a>
+			<br/>
 
-			<a href="Update.do?filmId=${film.id}">Update</a>
+			<a href="Update.do?filmId=${film.id}">Update Film</a>
 
 			<br>
 
 
 			<form action="Delete.do" method="POST">
-				Delete Film <input type="hidden" name="filmId" value="${film.id}" />
+				<label for="filmId">Click to delete film</label> 
+				<input type="hidden" name="filmId" value="${film.id}" />
 				<input type="submit" value="Delete" />
 
 
 			</form>
-			<br/>
-			<a href="home.do">Home</a>
 
 		</c:when>
 		<c:otherwise>

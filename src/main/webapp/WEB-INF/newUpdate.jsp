@@ -33,8 +33,17 @@
 		<label for="rentDur">Rental Duration:</label>
 		 <input type="text" name="rentDur" value="${film.rentDur}"> 
 		 <br> 
-		 <label for="langId">Language id:</label>
-		 <input type="text" name="langId" value="${film.langId}"> 
+		 <label for="langId">Choose a language:</label>
+
+		<select name="langId" id="langId">
+		    <option value="${film.langId}" selected>${film.langName}</option>
+		    <option value="1">1 -English</option>
+		    <option value="2">2- Italian</option>
+		    <option value="3">3- Japanese</option>
+		    <option value="4">4- Mandarin</option>
+		    <option value="5">5- French</option>
+		    <option value="6">6- German</option>
+		</select>
 		 <br> 
 		 <label for="rentRate">Rental Rate:</label> 
 		 <input type="text" name="rentRate" value="${film.rentRate}"> 
@@ -45,22 +54,27 @@
 		 <label for="repCost">Replacement Cost:</label> <input type="text" name="repCost" value="${film.repCost}">
 
 		<br> 
-		<label for="rating">Rating:</label> 
-		<input type="text" name="rating" value="${film.rating}"> 
+		<label for="rating">Choose a Rating:</label>
+
+		<select name="rating" id="rating">
+		    <option value="${film.rating}" selected>${film.rating}</option>
+		    <option value="G">G</option>
+		    <option value="PG">PG</option>
+		    <option value="PG13">PG13</option>
+		    <option value="R">R</option>
+		    <option value="NC17">NC17</option>
+		</select>
 		<br> 
-		<label for="features">Special Features:</label> 
-		<input type="text" name="features" value="${film.features}"> 
+		   
+		   <label for="features">Special Features:</label> 
+		   <input type="text" name="features" value="${film.features}"> 
+		   
+		
+		
 		<br> 
 		
 		<input type="submit" value="Update Film">
 	</form>
-
-
-
-
-
-
-
 
 
 

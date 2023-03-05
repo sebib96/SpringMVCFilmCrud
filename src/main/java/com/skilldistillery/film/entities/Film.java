@@ -19,6 +19,7 @@ public class Film {
 	private String features;
 	private String langName;
 	private List<Actor> filmActors;
+	private String cat;
 
 	public String getLangName() {
 		return langName;
@@ -142,6 +143,14 @@ public class Film {
 
 	public void setFeatures(String features) {
 		this.features = features;
+	}
+
+	public String getCat() {
+		return cat;
+	}
+
+	public void setCat(String cat) {
+		this.cat = cat;
 	}
 
 	@Override

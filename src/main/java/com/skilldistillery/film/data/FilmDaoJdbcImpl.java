@@ -104,6 +104,7 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 				foundFilm.setLangName(findFilmLanguage(filmId));
 				foundFilm.setFilmActors(findActorsByFilmId(filmId));
 				foundFilm.setFilmActors(findActorsByFilmId(foundFilm.getId()));
+				foundFilm.setCat(findCategory(filmId));
 			}
 			conn.close();
 			stmnt.close();
@@ -135,7 +136,7 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 						film.getString("rating"), film.getString("special_features"));
 				foundFilm.setLangName(findFilmLanguage(foundFilm.getId()));
 				foundFilm.setFilmActors(findActorsByFilmId(foundFilm.getId()));
-
+				foundFilm.setCat(findCategory(foundFilm.getId()));
 				filmList.add(foundFilm);
 
 			}
@@ -295,7 +296,9 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 
 		try {
 			Connection conn = DriverManager.getConnection(url, user, pass);
-			String sql = "SELECT cat.name \n" + "From Category cat Join film flm \n" + "On cat.id = flm.id \n"
+			String sql = "SELECT cat.name \n" 
+					+ "From Category cat Join film flm \n" 
+					+ "On cat.id = flm.id \n"
 					+ "WHERE flm.id = ? ";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, filmId);

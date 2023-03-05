@@ -21,18 +21,22 @@
 			<c:when test="${empty film}"> No Films Found </c:when>
 			<c:otherwise>
 				<c:forEach var="film" items="${film}">
+				
 					<h4>Film title: ${film.title}</h4>
+					
 					<ul>
 						<li>Film id: ${film.id}</li>
 						<li>Description: ${film.desc}.</li>
 						<li>Release year: ${film.releaseYear}</li>
-						<li>Language id: ${film.langId}</li>
+						<li>Language Name: ${film.langName}</li>
 						<li>Rental duration: ${film.rentDur} days</li>
 						<li>Rental cost: $${film.rentRate}</li>
 						<li>Film length: ${film.length} mins</li>
 						<li>Replacement cost: $${film.repCost}</li>
 						<li>Film Rating: ${film.rating}</li>
 						<li>Special Features ${film.features}</li>
+						<li>Genere: ${film.cat }</li>
+						<li>Cast: ${film.filmActors}</li>
 					</ul>
 				</c:forEach>
 
@@ -42,8 +46,8 @@
 
 
 					<form action="Update.do" method="GET">
-						<label for="filmId">Enter film Id</label> <input type="text"
-						name="filmId" value=""> <input type="submit"
+						<label for="filmId">Enter Film Id to Update</label> <input type="text"
+						name="filmId" value="" size="6" > <input type="submit"
 						value="Update film">
 						</form>
 
@@ -52,8 +56,8 @@
 
 				<br />
 				<form action="Delete.do" method="POST">
-					<label for="filmId">Delete Film</label> <input type="text"
-						name="filmId" value=""> <input type="submit"
+					<label for="filmId">Enter Film Id to Delete</label> <input type="text"
+						name="filmId" value="" size="6"> <input type="submit"
 						value="Delete film">
 				</form>
 				<a href="home.do">Home</a>
