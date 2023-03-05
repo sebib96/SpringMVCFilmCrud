@@ -57,6 +57,7 @@
 						name="filmId" value=""> <input type="submit"
 						value="Delete film">
 				</form>
+				<a href="home.do">Home</a>
 			</c:otherwise>
 		</c:choose>
 	</ul>

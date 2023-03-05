@@ -81,7 +81,7 @@ public class FilmController {
 	@RequestMapping(path = "filmDeleted.do", method = RequestMethod.GET)
 	public ModelAndView deletedFilm() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("home");
+		mv.setViewName("DeleteSuccessful");
 
 		return mv;
 	}
@@ -104,7 +104,6 @@ public class FilmController {
 		filmDao.updateFilm(id, film);
 		redir.addFlashAttribute("film", film);
 		mv.setViewName("redirect:filmUpdated.do");
-//System.out.println(film.toString());
 		return mv;
 	}
 
@@ -112,7 +111,7 @@ public class FilmController {
 	@RequestMapping(path = "filmUpdated.do", method = RequestMethod.GET)
 	public ModelAndView updatedFilm() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("viewFilm");
+		mv.setViewName("UpdateSuccessful");
 
 		return mv;
 	}

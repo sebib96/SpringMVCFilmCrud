@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Film</title>
+<title>Update Successful</title>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
@@ -16,6 +16,10 @@
 
 </head>
 <body>
+
+
+<h2>Your Update Was Successful!</h2>
+
 	<c:choose>
 		<c:when test="${! empty film}">
 
