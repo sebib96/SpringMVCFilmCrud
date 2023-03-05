@@ -42,10 +42,11 @@
 
 
 
-					<a href="Update.do?filmId=filmId">Update Film</a> <label
-						for="filmId">Enter film Id</label> <input type="text"
+					<form action="Update.do" method="GET">
+						<label for="filmId">Enter film Id</label> <input type="text"
 						name="filmId" value=""> <input type="submit"
 						value="Update film">
+						</form>
 
 				
 
