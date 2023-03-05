@@ -34,7 +34,7 @@
 		 <input type="text" name="rentDur" value="${film.rentDur}"> 
 		 <br> 
 		 <label for="langId">Language id:</label>
-		 <input type="text" name="langId" value=""> 
+		 <input type="text" name="langId" value="${film.langId}"> 
 		 <br> 
 		 <label for="rentRate">Rental Rate:</label> 
 		 <input type="text" name="rentRate" value="${film.rentRate}"> 
@@ -51,8 +51,7 @@
 		<label for="features">Special Features:</label> 
 		<input type="text" name="features" value="${film.features}"> 
 		<br> 
-		<label for="langName">Language:</label> 
-		<input type="text" name="langName" value="${film.langName}"> 
+		
 		<input type="submit" value="Update Film">
 	</form>
 

@@ -29,7 +29,6 @@
 				<li>Description: ${film.desc}.</li>
 				<li>Release year: ${film.releaseYear}</li>
 				<li>Language id: ${film.langId}</li>
-				<li>Language name: ${film.langName}</li>
 				<li>Rental duration: ${film.rentDur} days</li>
 				<li>Rental cost: ${film.rentRate}</li>
 				<li>Film length: ${film.length} mins</li>
