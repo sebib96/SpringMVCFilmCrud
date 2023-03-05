@@ -35,11 +35,22 @@ public class FilmController {
 	@RequestMapping(path = "NewFilm.do", method = RequestMethod.POST)
 	public ModelAndView makeNewFilm(Film film, RedirectAttributes redir) {
 		ModelAndView mv = new ModelAndView();
-		filmDao.createFilm(film);
+		Film createdFilm = null;
+		try {
+		createdFilm = filmDao.createFilm(film);
+		}catch(RuntimeException e) {
+			mv.setViewName("errors/createError");
+			return mv;
+		}
+		if(createdFilm != null) {
 		redir.addFlashAttribute("film", film);
 		mv.setViewName("redirect:filmAdded.do");
-
 		return mv;
+		}
+		else {
+			mv.setViewName("errors/createError");
+			return mv;
+		}
 	}
 
 	@RequestMapping(path = "filmAdded.do", method = RequestMethod.GET)
@@ -71,11 +82,16 @@ public class FilmController {
 	@RequestMapping(path = "Delete.do", method = RequestMethod.POST)
 	public ModelAndView deleteFilm(int filmId, RedirectAttributes redir) {
 		ModelAndView mv = new ModelAndView();
-		filmDao.deleteFilm(filmId);
+		boolean deleted = filmDao.deleteFilm(filmId);
+		if(deleted) {
 		redir.addFlashAttribute("film", filmId);
 		mv.setViewName("redirect:filmDeleted.do");
-
 		return mv;
+		}
+		else {
+			mv.setViewName("errors/deleteError");
+			return mv;
+		}
 	}
 
 	@RequestMapping(path = "filmDeleted.do", method = RequestMethod.GET)
@@ -101,10 +117,16 @@ public class FilmController {
 	@RequestMapping(path = "finalUpdate.do", method = RequestMethod.POST)
 	public ModelAndView updateFilm(int id, Film film, RedirectAttributes redir) {
 		ModelAndView mv = new ModelAndView();
-		filmDao.updateFilm(id, film);
+		Film updatedFilm = filmDao.updateFilm(id, film);
+		if (updatedFilm != null) {
 		redir.addFlashAttribute("film", film);
 		mv.setViewName("redirect:filmUpdated.do");
 		return mv;
+		}
+		else {
+			mv.setViewName("errors/updateError");
+			return mv;
+		}
 	}
 
 

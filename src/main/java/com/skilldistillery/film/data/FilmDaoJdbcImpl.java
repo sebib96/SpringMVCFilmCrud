@@ -200,7 +200,6 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 	@Override
 	public boolean deleteFilm(int filmId) {
 		Connection conn = null;
-		Film film = new Film();
 		try {
 			conn = DriverManager.getConnection(url, user, pass);
 			conn.setAutoCommit(false);
