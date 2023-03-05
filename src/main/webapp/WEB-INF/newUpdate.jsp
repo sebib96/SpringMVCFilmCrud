@@ -28,16 +28,16 @@
 
 		<br> 
 		<label for="releaseYear">Release Year:</label> 
-		<input type="text" name="releaseYear" value="${film.releaseYear}"> 
+		<input type="number" name="releaseYear" value="${film.releaseYear}"> 
 		<br>
 		<label for="rentDur">Rental Duration:</label>
-		 <input type="text" name="rentDur" value="${film.rentDur}"> 
+		 <input type="number" name="rentDur" value="${film.rentDur}"> 
 		 <br> 
 		 <label for="langId">Choose a language:</label>
 
 		<select name="langId" id="langId">
 		    <option value="${film.langId}" selected>${film.langName}</option>
-		    <option value="1">1 -English</option>
+		    <option value="1">1- English</option>
 		    <option value="2">2- Italian</option>
 		    <option value="3">3- Japanese</option>
 		    <option value="4">4- Mandarin</option>
@@ -46,12 +46,12 @@
 		</select>
 		 <br> 
 		 <label for="rentRate">Rental Rate:</label> 
-		 <input type="text" name="rentRate" value="${film.rentRate}"> 
+		 <input type="number" name="rentRate" value="${film.rentRate}"> 
 		 <br> 
 		 <label for="length">Length:</label> 
-		 <input type="text" name="length" value="${film.length}"> 
+		 <input type="number" name="length" value="${film.length}"> 
 		 <br> 
-		 <label for="repCost">Replacement Cost:</label> <input type="text" name="repCost" value="${film.repCost}">
+		 <label for="repCost">Replacement Cost:</label> <input type="number" name="repCost" value="${film.repCost}">
 
 		<br> 
 		<label for="rating">Choose a Rating:</label>

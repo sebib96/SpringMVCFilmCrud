@@ -46,7 +46,7 @@
 
 
 					<form action="Update.do" method="GET">
-						<label for="filmId">Enter Film Id to Update</label> <input type="text"
+						<label for="filmId">Enter Film Id to Update</label> <input type="number"
 						name="filmId" value="" size="6" > <input type="submit"
 						value="Update film">
 						</form>
@@ -56,7 +56,7 @@
 
 				<br />
 				<form action="Delete.do" method="POST">
-					<label for="filmId">Enter Film Id to Delete</label> <input type="text"
+					<label for="filmId">Enter Film Id to Delete</label> <input type="number"
 						name="filmId" value="" size="6"> <input type="submit"
 						value="Delete film">
 				</form>
