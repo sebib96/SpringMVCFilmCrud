@@ -40,7 +40,7 @@ After the transaction begins, the SQL query language is used to create an insert
 
 This created film is then sent back to the controller whereas a command object it is set into the ModelAndView and sent to be displayed in the JSP. It is important in the case of command objects that each name in the HTML form actioning it matches exactly to the setters of that object. This is the only way that the command object's fields can be set. This is done by removing the word set from the setter method and the first letter of the following is set to lowercase.
 
-#JSP 
+# JSP 
 
 Depending on which controller method is called, determines which JSP will be displayed to the user. In the case of creating a film, the user is sent to the viewFilm.jsp. Here the user is displayed all of the film's information using JSP expression language(EL). EL allows for the object name to be used to call its methods similar to how they are called by command objects. In viewFilm.jsp as long as the film is not considered to be empty, The film's information is displayed in an unordered list. Beneath that, a link to the home page is provided as well as a link to update the film and a submit button to delete the film. 
 
