@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Successfully Deleted</title>
+<link rel="icon" type="image/x-icon" href="resources/film.svg">
 </head>
 <body>
 

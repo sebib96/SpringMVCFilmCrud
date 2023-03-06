@@ -2,13 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>New Film</title>
+<title>New Film Form</title>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
 	crossorigin="anonymous">
+	
+	<link rel="icon" type="image/x-icon" href="resources/film.svg">
 
 </head>
 <body>
@@ -35,11 +37,11 @@
 		<br> 
 		
 		<label for="rentRate">Rental Rate:</label> <input
-			type="number" name="rentRate" value=""> <br> 
+			type="number" step="0.01" name="rentRate" value=""> <br> 
 			
 			<label for="length">Length:</label> <input type="number" name="length"
 			value=""> <br>
-			 <label for="repCost">Replacement Cost:</label> <input type="number" name="repCost" value=""> <br> 
+			 <label for="repCost">Replacement Cost:</label> <input type="number" step="0.01" name="repCost" value=""> <br> 
 			
 			<label for="rating">Choose a Rating:</label> <select name="rating"
 			id="rating">

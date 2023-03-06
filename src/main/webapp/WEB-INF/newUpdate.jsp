@@ -14,6 +14,7 @@
 	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
 	crossorigin="anonymous">
 
+<link rel="icon" type="image/x-icon" href="resources/film.svg">
 </head>
 <body>
 
@@ -46,12 +47,12 @@
 		</select>
 		 <br> 
 		 <label for="rentRate">Rental Rate:</label> 
-		 <input type="number" name="rentRate" value="${film.rentRate}"> 
+		 <input type="number" step="0.01" name="rentRate" value="${film.rentRate}"> 
 		 <br> 
 		 <label for="length">Length:</label> 
 		 <input type="number" name="length" value="${film.length}"> 
 		 <br> 
-		 <label for="repCost">Replacement Cost:</label> <input type="number" name="repCost" value="${film.repCost}">
+		 <label for="repCost">Replacement Cost:</label> <input type="number" step="0.01" name="repCost" value="${film.repCost}">
 
 		<br> 
 		<label for="rating">Choose a Rating:</label>
