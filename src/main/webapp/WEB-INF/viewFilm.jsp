@@ -38,17 +38,10 @@
 				<li><strong>Replacement cost:</strong> ${film.repCost}</li>
 				<li><strong>Film Rating:</strong> ${film.rating}</li>
 				<li><strong>Special Features:</strong> ${film.features}</li>
-				<li><strong>Genre:</strong> ${film.cat }</li>
+				<li><strong>Genre:</strong> ${film.cat}</li>
 				<li><strong>Cast:</strong> ${film.filmActors}</li>
 
 			</ul>
-
-		</c:when>
-		<c:otherwise>
-			<p>No film found </p>
-		</c:otherwise>
-	</c:choose>
-	
 			<br>
 	<a class="btn btn-warning" href="Update.do?filmId=${film.id}" role="button">Update Film</a>
 			<br>
@@ -59,6 +52,13 @@
 				<input type="hidden" name="filmId" value="${film.id}" />
 				<input type="submit" class="btn btn-danger"value="Delete" />
 			</form>
+
+		</c:when>
+		<c:otherwise>
+			<p>No film found </p>
+		</c:otherwise>
+	</c:choose>
+	
 
 
 	<script

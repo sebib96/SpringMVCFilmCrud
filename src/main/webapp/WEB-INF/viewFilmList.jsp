@@ -57,15 +57,15 @@
 						</form>
 						
 				<br/>
-			</c:otherwise>
-		</c:choose>
-	</ul>
 				<form action="Delete.do" method="POST">
 					<label for="filmId">Enter Film ID to Delete</label> <input type="number"
 						name="filmId" value="" size="6"> <input type="submit" class="btn btn-danger"
 						value="Delete Film">
 				</form>
 				
+			</c:otherwise>
+		</c:choose>
+	</ul>
 
 <script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
