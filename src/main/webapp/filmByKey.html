@@ -11,15 +11,21 @@
 	crossorigin="anonymous">
 	
 	<link rel="icon" type="image/x-icon" href="resources/film.svg">
+	<link rel="stylesheet" href="resources/styles.css">
 
 
 
 </head>
 <body>
-	<h3>Films</h3>
+<a class="btn btn-dark" href="home.do" role="button" id=homeButton>Home</a>
+		<h3 align="center">Films</h3>
+		<br>
 	<form action="GetFilmDataByKey.do" method="GET">
-		Film Keyword <input type="text" name="keyWord" size="6" /> <input
-			type="submit" value="Get Film data" />
+		Film Keyword <input type="text" name="keyWord" size="20" /> 
+		<br>
+		<br>
+		<input
+			type="submit" class="btn btn-info" value="Get Film Data" />
 	</form>
 
 	<script

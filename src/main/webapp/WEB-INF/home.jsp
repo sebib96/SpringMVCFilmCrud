@@ -17,15 +17,20 @@
 
 <link rel="icon" type="image/x-icon" href="resources/film.svg">
 
+<link rel="stylesheet" href="resources/styles.css">
+
 </head>
 <body>
-
-	<a href="filmIdForm.html">Get film by ID</a>
-	<br />
-	<a href="newFilmForm.html">Add a new film</a>
-	<br />
-	<a href="filmByKey.html">Search for film by keyword</a>
-	<br />
+	<br/>
+	<a class="btn btn-dark" href="filmIdForm.html" role="button">Get Film by ID</a>
+	<br/>
+	<br/>
+	<a class="btn btn-dark" href="newFilmForm.html" role="button">Add a new Film</a>
+	<br/>
+	<br/>
+	<a class="btn btn-dark" href="filmByKey.html" role="button">Search for Film by keyword</a>
+	<br/>
+	<br/>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"

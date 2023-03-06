@@ -15,18 +15,22 @@
 	crossorigin="anonymous">
 	
 	<link rel="icon" type="image/x-icon" href="resources/film.svg">
-
+	<link rel="stylesheet" href="resources/styles.css">
 </head>
 <body>
-
-
-<h2>Your Update Was Successful!</h2>
+<a class="btn btn-dark" href="home.do" role="button" id=homeButton>Home</a>
+<br>
+<br>
+<h2>Your update was successful</h2>
 
 	<c:choose>
 		<c:when test="${! empty film}">
-
+	<div id="titleBlock"></div>
 			<h4>Film title: ${film.title}</h4>
-			<ul>
+			<div id="titleBlock"></div>
+			
+			<ul style="width: auto; height:auto; background: #1b1a42;
+					border-radius: 10px; align-self:center;">
 				<li>ID: ${film.id}</li>
 				<li>Description: ${film.desc}.</li>
 				<li>Release year: ${film.releaseYear}</li>
@@ -39,21 +43,17 @@
 				<li>Special Features ${film.features}</li>
 
 			</ul>
-
-
-			<a href="Update.do?filmId=${film.id}">Update</a>
-
+		<a class="btn btn-warning" href="Update.do?filmId=${film.id}" role="button">Update Film</a>
 			<br>
-
-
-			<form action="Delete.do" method="POST">
-				Delete Film <input type="hidden" name="filmId" value="${film.id}" />
-				<input type="submit" value="Delete" />
-
-
+			<br>
+				<form action="Delete.do" method="POST">
+				<label for="filmId"></label> 
+				<input type="hidden" name="filmId" value="${film.id}" />
+				<input type="submit" class="btn btn-danger"value="Delete" />
 			</form>
+
 			<br/>
-			<a href="home.do">Home</a>
+
 
 		</c:when>
 		<c:otherwise>
@@ -61,6 +61,9 @@
 		</c:otherwise>
 	</c:choose>
 
-
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+		integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+		crossorigin="anonymous"></script>
 </body>
 </html>

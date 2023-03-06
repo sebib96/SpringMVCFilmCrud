@@ -11,15 +11,22 @@
 	crossorigin="anonymous">
 	
 	<link rel="icon" type="image/x-icon" href="resources/film.svg">
+	<link rel="stylesheet" href="resources/styles.css">
 
 
 
 </head>
 <body>
-	<h3>Films</h3>
+<a class="btn btn-dark" href="home.do" role="button" id=homeButton>Home</a>
+	<h3 align="center">Films</h3>
+	</br>
 	<form action="GetFilmDataById.do" method="GET">
-		Film ID <input type="number" name="filmId" size="4" /> <input
-			type="submit" value="Get Film data" />
+		 Film ID <input type="number" name="filmId" size="4" /> 
+		<br>
+		<br>
+	
+<input type="submit" value="Get Film Data" class="btn btn-info enabled" tabindex="-1" role="button" aria-disabled="false">
+
 	</form>
 
 <script
