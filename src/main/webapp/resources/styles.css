@@ -35,19 +35,19 @@ h3 {
 }
 
 #nfInfo {
-	width: 185px;
+	width: 150px;
 	height: 20px;
 	background: #667985;
 	border-radius: 8px;
-	align-self: center;
+	
 }
 
 #nfInfo2 {
-	width: 230px;
+	width: 152px;
 	height: 20px;
 	background: #667985;
 	border-radius: 8px;
-	align-self: center;
+	
 }
 
 #nfInfo3 {
